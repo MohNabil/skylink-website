@@ -1,13 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -19,7 +24,7 @@ export function Navbar() {
     { name: "Blog", href: "/blog" },
     { name: "Submit Project", href: "/submit-project" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   return (
     <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
@@ -40,7 +45,9 @@ export function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-gray-600 hover:text-blue-600 transition-colors font-medium ${
-                  item.name === "Submit Project" ? "text-blue-600 font-semibold" : ""
+                  item.name === "Submit Project"
+                    ? "text-blue-600 font-semibold"
+                    : ""
                 }`}
               >
                 {item.name}
@@ -59,6 +66,7 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
               <div className="flex flex-col space-y-4 mt-8">
                 {navigation.map((item) => (
                   <Link
@@ -70,16 +78,16 @@ export function Navbar() {
                     {item.name}
                   </Link>
                 ))}
-                <Button className="bg-blue-600 hover:bg-blue-700 mt-4">
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    Get Started
-                  </Link>
-                </Button>
+                {/* <Button className="bg-blue-600 hover:bg-blue-700 mt-4"> */}
+                {/*   <Link href="/contact" onClick={() => setIsOpen(false)}> */}
+                {/*     Get Started */}
+                {/*   </Link> */}
+                {/* </Button> */}
               </div>
             </SheetContent>
           </Sheet>
         </div>
       </div>
     </nav>
-  )
+  );
 }
